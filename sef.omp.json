@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "final_space": true,
+  "version": 3,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "palettes": {
+    "template": "{{ if eq .Shell \"pwsh\" }}pwsh{{ else }}bash{{ end}}",
+    "list": {
+      "pwsh":{
+        "shell": "#43aed1",
+        "gray": "#444444",
+        "git": "#f05033",
+        "dotnet": "#9780e5",
+        "error": "#e74856"
+      },
+      "bash": {
+        "shell": "#e95420",
+        "gray": "#444444",
+        "git": "#f05033",
+        "dotnet": "#9780e5",
+        "error": "#e74856"
+      }
+    }
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:shell",
+          "style": "plain",
+          "template": "\u256d ",
+          "type": "text"
+        },
+        {
+          "type": "shell",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "foreground": "p:shell",
+          "background": "p:gray",
+          "properties": {
+            "mapped_shell_names": {
+              "pwsh": "pwsh"
+            }
+          },
+          "template": "{{ .Name }}"
+        },
+        {
+          "background": "transparent",
+          "foreground": "p:shell",
+          "properties": {
+            "style": "agnoster_short",
+            "max_depth": 3,
+            "folder_icon": "\u2026",
+            "folder_separator_icon": "/"
+          },
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "p:git",
+          "background": "p:gray",
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "branch_icon": "\uf418 ",
+            "branch_identical_icon": "\uf444",
+            "branch_gone_icon": "\uf655"
+          },
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "template": "\ue702 {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \ue0b1 \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \ue0b1 \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ue0b1 \uf692 {{ .StashCount }}{{ end }}",
+          "type": "git"
+        },
+        {
+          "type": "dotnet",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "foreground": "p:dotnet",
+          "background": "p:gray",
+          "template": "\ue77f {{ .Full }} "
+        },
+        {
+          "type": "exit",
+          "style": "diamond",
+          "foreground": "#ffffff",
+          "background": "p:error",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue23a"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "p:shell",
+          "properties": {
+            "style": "austin",
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\uf608 {{ .FormattedMs }}",
+          "type": "executiontime"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:shell",
+          "style": "plain",
+          "template": "\u2502",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:shell",
+          "style": "plain",
+          "template": "\u2570~>",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:shell",
+    "template": "-> "
+  }
+}
