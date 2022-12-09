@@ -10,6 +10,7 @@
         "shell": "#43aed1",
         "gray": "#444444",
         "git": "#f05033",
+        "azure": "#00bcf0",
         "dotnet": "#9780e5",
         "error": "#e74856"
       },
@@ -17,6 +18,7 @@
         "shell": "#e95420",
         "gray": "#444444",
         "git": "#f05033",
+        "azure": "#00bcf0",
         "dotnet": "#9780e5",
         "error": "#e74856"
       }
@@ -46,6 +48,15 @@
             }
           },
           "template": "{{ .Name }}"
+        },
+        {
+          "type": "az",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "foreground": "p:azure",
+          "background": "p:gray",
+          "template": "\uFD03 {{ .Name }}"
         },
         {
           "background": "transparent",

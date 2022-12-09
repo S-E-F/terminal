@@ -1,5 +1,9 @@
 oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\sef.omp.json | Invoke-Expression
 
+if ((Get-Module -ListAvailable -Name Az)) {
+    $env:POSH_AZURE_ENABLED = $true
+}
+
 if (!(Get-Module -ListAvailable -Name Terminal-Icons)) {
     Install-Module -Name Terminal-Icons -Repository PSGallery
 }
